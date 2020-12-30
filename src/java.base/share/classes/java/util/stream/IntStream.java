@@ -551,7 +551,7 @@ public interface IntStream extends BaseStream<Integer, IntStream> {
      * if any. This is equivalent to:
      * <pre>{@code
      *     boolean foundAny = false;
-     *     int result = null;
+     *     int result = 0;
      *     for (int element : this stream) {
      *         if (!foundAny) {
      *             foundAny = true;

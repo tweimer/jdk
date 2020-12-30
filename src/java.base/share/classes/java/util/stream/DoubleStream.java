@@ -554,7 +554,7 @@ public interface DoubleStream extends BaseStream<Double, DoubleStream> {
      * value, if any. This is equivalent to:
      * <pre>{@code
      *     boolean foundAny = false;
-     *     double result = null;
+     *     double result = 0.0;
      *     for (double element : this stream) {
      *         if (!foundAny) {
      *             foundAny = true;

@@ -552,7 +552,7 @@ public interface LongStream extends BaseStream<Long, LongStream> {
      * if any. This is equivalent to:
      * <pre>{@code
      *     boolean foundAny = false;
-     *     long result = null;
+     *     long result = 0L;
      *     for (long element : this stream) {
      *         if (!foundAny) {
      *             foundAny = true;
