@@ -74,24 +74,25 @@ import java.util.stream.StreamSupport;
  */
 
 public class BufferedReader extends Reader {
+    private static final int INVALIDATED = -2;
+    private static final int UNMARKED = -1;
+
+    private static final int DEFAULT_CHAR_BUFFER_SIZE = 8192;
+    private static final int DEFAULT_EXPECTED_LINE_LENGTH = 80;
+    
     private Reader in;
 
     private char[] cb;
     private int nChars, nextChar;
 
-    private static final int INVALIDATED = -2;
-    private static final int UNMARKED = -1;
     private int markedChar = UNMARKED;
-    private int readAheadLimit = 0; /* Valid only when markedChar > 0 */
+    private int readAheadLimit; /* Valid only when markedChar > 0 */
 
     /** If the next character is a line feed, skip it */
-    private boolean skipLF = false;
+    private boolean skipLF;
 
     /** The skipLF flag when the mark was set */
-    private boolean markedSkipLF = false;
-
-    private static final int DEFAULT_CHAR_BUFFER_SIZE = 8192;
-    private static final int DEFAULT_EXPECTED_LINE_LENGTH = 80;
+    private boolean markedSkipLF;
 
     /**
      * Creates a buffering character-input stream that uses an input buffer of
